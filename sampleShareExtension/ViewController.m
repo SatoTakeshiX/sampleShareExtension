@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *sampleLabel;
 
 @end
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //Shareで保存したデータ
+    // 取り出し
+    NSUserDefaults *sharedUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.personal-factory.sampleShareExtension"];
+    NSString *username = [sharedUserDefaults stringForKey:@"username"];
+    
+    NSLog(@"Share Data : %@", username);
+    
+    self.sampleLabel.text = username;
 }
 
 - (void)didReceiveMemoryWarning {
